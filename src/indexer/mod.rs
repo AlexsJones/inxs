@@ -1,7 +1,6 @@
 use crate::database;
 use base64::prelude::*;
 use std::fs;
-use std::io;
 use walkdir::WalkDir;
 
 use database::Database;

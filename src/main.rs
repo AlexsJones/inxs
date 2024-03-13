@@ -1,5 +1,5 @@
 use crate::database::Database;
-use clap::{Parser, Subcommand};
+use clap::Parser;
 use std::{fs::OpenOptions, io::Write};
 mod database;
 mod indexer;
@@ -13,13 +13,16 @@ struct Args {
 #[derive(Parser, Debug)]
 enum SubCommands {
     Index {
-        #[clap(short, long, required = true)]
+        /// Path to the directory structure to index
+        #[arg(short, long, required = true)]
         path: String,
     },
     Check {
-        #[clap(short, long, required = true)]
+        /// Path to the directory structure to check against the index
+        #[arg(short, long, required = true)]
         path: String,
-        #[clap(short, long, required = false)]
+        /// Optional output path to save the differences between indices
+        #[arg(short, long, required = false)]
         output: String,
     },
     Clean {},
